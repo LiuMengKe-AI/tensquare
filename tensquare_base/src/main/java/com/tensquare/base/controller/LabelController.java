@@ -2,14 +2,17 @@ package com.tensquare.base.controller;
 
 import com.tensquare.base.pojo.Label;
 import com.tensquare.base.service.LabelService;
+import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @ClassName: UserController
@@ -97,4 +100,17 @@ public class LabelController {
         return new Result(true, StatusCode.OK, "删除成功");
     }
 
+    /**
+     * 分页条件查询
+     *
+     * @param label
+     * @return
+     */
+    @ApiOperation(value = "条件分页查询")
+    @ResponseBody
+    @PostMapping(value = "/search/{page}/{size}")
+    public Result<Label> findSearch(@RequestBody Label label, @PathVariable("page") int page, @PathVariable("size") int size) {
+        Page<Label> pageList = labelService.findSearch(label, page, size);
+        return new Result<Label>(true, StatusCode.OK, "查询成功", new PageResult<>(pageList.getTotalElements(), pageList.getContent()));
+    }
 }
