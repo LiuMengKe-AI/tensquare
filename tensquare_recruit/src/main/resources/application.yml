@@ -1,0 +1,40 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: tensquare‐recruit
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.62.102:3306/tensquare_recruit?characterEncoding=utf-8
+    username: root
+    password: 123456
+  jpa:
+    database: mysql
+    show-sql: true
+    generate-ddl: true
+secure:
+  ignored:
+    urls:
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - /webjars/springfox-swagger-ui/**
+      - /**/**
+      - /bank/**
+      - /user/**
+      - /cms/authCode/**
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    pageSizeZero: true
+    params: count=countSql
+logging:
+  level:
+    com.macro.mall.mapper: debug
+    com.macro.mall.portal.dao: debug
