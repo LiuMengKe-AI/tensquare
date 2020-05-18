@@ -14,7 +14,7 @@
     </modules>
     <packaging>pom</packaging>
     <name>tensquare_parent</name>
-    <description>十次方项目‐黑马程序员</description>
+    <description>十次方项目</description>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
