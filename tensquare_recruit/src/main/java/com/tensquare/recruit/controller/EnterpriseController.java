@@ -40,11 +40,20 @@ public class EnterpriseController {
     }
 
     /**
-     * 查询最新职位列表(按创建日期降序排序)
+     * 查询状态为2并以创建日期降序排序，查询前4条记录
      * @return
      */
     @GetMapping(value = "/search/recruit")
     public Result<Recruit> findRecruit(){
         return new Result<> (true,StatusCode.OK,"查询成功",recruitService.findTop4ByStateOrderByCreatetimeDesc("2"));
+    }
+
+    /**
+     *查询状态不为0并以创建日期降序排序，查询前12条记录
+     * @return
+     */
+    @GetMapping(value = "/search/newList")
+    public Result<Recruit> newList(){
+        return new Result<> (true,StatusCode.OK,"查询成功",recruitService.findTop12ByStateNotOrderByCreatetimeDesc());
     }
 }

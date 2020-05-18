@@ -13,7 +13,12 @@ import java.util.List;
  * @Date: 2020/5/16 16:11
  * @Version: 1.0
  **/
-public interface RecruitDao extends JpaRepository<Recruit,String>,JpaSpecificationExecutor<Recruit> {
+public interface RecruitDao extends JpaRepository<Recruit, String>, JpaSpecificationExecutor<Recruit> {
+
+
     List<Recruit> findTop4ByStateOrderByCreatetimeDesc(String s);
+
+    List<Recruit> findTop12ByStateNotOrderByCreatetimeDesc(String s);
+
 
 }

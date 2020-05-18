@@ -21,4 +21,8 @@ public class RecruitService {
     public List<Recruit> findTop4ByStateOrderByCreatetimeDesc(String s) {
         return recruitDao.findTop4ByStateOrderByCreatetimeDesc(s);
     }
+
+    public List<Recruit> findTop12ByStateNotOrderByCreatetimeDesc() {
+        return recruitDao.findTop12ByStateNotOrderByCreatetimeDesc("0");
+    }
 }
