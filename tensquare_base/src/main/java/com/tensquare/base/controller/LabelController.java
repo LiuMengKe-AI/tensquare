@@ -106,11 +106,11 @@ public class LabelController {
      * @param label
      * @return
      */
-    @ApiOperation(value = "条件分页查询")
+   /* @ApiOperation(value = "条件分页查询")
     @ResponseBody
     @PostMapping(value = "/search/{page}/{size}")
     public Result<Label> findSearch(@RequestBody Label label, @PathVariable("page") int page, @PathVariable("size") int size) {
         Page<Label> pageList = labelService.findSearch(label, page, size);
         return new Result<Label>(true, StatusCode.OK, "查询成功", new PageResult<>(pageList.getTotalElements(), pageList.getContent()));
-    }
+    }*/
 }

@@ -1,21 +1,19 @@
 package com.tensquare.base.pojo;
 
-import lombok.AllArgsConstructor;
+import java.io.Serializable;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
+/**
+ * @ClassName: ${NAME}
+ * @Author: LMK
+ * @Date: 2020/5/18 16:14
+ * @Version: 1.0
+ **/
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-@Table(name = "tb_label")
-public class Label {
+public class Label implements Serializable {
     /**
      * 标签ID
      */
-    @Id
     private String id;
 
     /**
@@ -42,5 +40,6 @@ public class Label {
      * 粉丝数
      */
     private Long fans;
-}
 
+    private static final long serialVersionUID = 1L;
+}
