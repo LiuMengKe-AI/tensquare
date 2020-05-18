@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tensquare.base.dao.LabelMapper">
+  <resultMap id="BaseResultMap" type="com.tensquare.base.pojo.Label">
+    <!--@mbg.generated-->
+    <id column="id" property="id" />
+    <result column="labelname" property="labelname" />
+    <result column="state" property="state" />
+    <result column="count" property="count" />
+    <result column="recommend" property="recommend" />
+    <result column="fans" property="fans" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, labelname, `state`, `count`, recommend, fans
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_label
+    where id = #{id}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from tb_label
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tensquare.base.pojo.Label" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_label (labelname, `state`, `count`, recommend, fans)
+    values (#{labelname}, #{state}, #{count}, #{recommend}, #{fans})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.tensquare.base.pojo.Label" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_label
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="labelname != null">
+        labelname,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="count != null">
+        `count`,
+      </if>
+      <if test="recommend != null">
+        recommend,
+      </if>
+      <if test="fans != null">
+        fans,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="labelname != null">
+        #{labelname},
+      </if>
+      <if test="state != null">
+        #{state},
+      </if>
+      <if test="count != null">
+        #{count},
+      </if>
+      <if test="recommend != null">
+        #{recommend},
+      </if>
+      <if test="fans != null">
+        #{fans},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tensquare.base.pojo.Label">
+    <!--@mbg.generated-->
+    update tb_label
+    <set>
+      <if test="labelname != null">
+        labelname = #{labelname},
+      </if>
+      <if test="state != null">
+        `state` = #{state},
+      </if>
+      <if test="count != null">
+        `count` = #{count},
+      </if>
+      <if test="recommend != null">
+        recommend = #{recommend},
+      </if>
+      <if test="fans != null">
+        fans = #{fans},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tensquare.base.pojo.Label">
+    <!--@mbg.generated-->
+    update tb_label
+    set labelname = #{labelname},
+      `state` = #{state},
+      `count` = #{count},
+      recommend = #{recommend},
+      fans = #{fans}
+    where id = #{id}
+  </update>
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_label;
+  </select>
+  <!--  <resultMap id="BaseResultMap" type="com.tensquare.base.pojo.Label">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <id column="labelname" jdbcType="VARCHAR" property="labelname" />
+        <id column="state" jdbcType="VARCHAR" property="state" />
+        <id column="count" jdbcType="BIGINT" property="count" />
+        <id column="recommend" jdbcType="VARCHAR" property="recommend" />
+        <id column="fans" jdbcType="BIGINT" property="fans" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,labelname,state,count,recommend,fans
+    </sql>
+
+    <select id="findById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tb_label
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tensquare.base.pojo.Label" useGeneratedKeys="true">
+        insert into tb_label
+    </insert>-->
+
+</mapper>

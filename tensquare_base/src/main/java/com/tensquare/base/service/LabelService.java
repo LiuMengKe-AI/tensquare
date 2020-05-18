@@ -1,6 +1,6 @@
 package com.tensquare.base.service;
 
-import com.tensquare.base.dao.LabelDao;
+import com.tensquare.base.dao.LabelMapper;
 import com.tensquare.base.pojo.Label;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,7 +26,7 @@ import java.util.Optional;
 @Service
 public class LabelService {
     @Autowired
-    private LabelDao labelDao;
+    private LabelMapper labelMapper;
     @Autowired
     private IdWorker idWorker;
 
@@ -36,7 +36,7 @@ public class LabelService {
      * @return
      */
     public List<Label> findAll() {
-        List<Label> labelDaoAll = labelDao.findAll();
+        List<Label> labelDaoAll = labelMapper.findAll();
         return labelDaoAll;
     }
 
@@ -44,8 +44,8 @@ public class LabelService {
      * 根据id查询标签
      */
     public Label findById(String id) {
-        Optional<Label> label = labelDao.findById(id);
-        return label.get();
+        Label label = labelMapper.selectByPrimaryKey(id);
+        return label;
     }
 
     /**
@@ -53,14 +53,14 @@ public class LabelService {
      */
     public void save(Label label) {
         label.setId(idWorker.nextId() + "");
-        labelDao.save(label);
+        labelMapper.insert(label);
     }
 
     /**
      * 修改标签
      */
     public void update(Label label) {
-        labelDao.save(label);
+        labelMapper.updateByPrimaryKey(label);
 
     }
 
@@ -68,7 +68,7 @@ public class LabelService {
      * 删除标签
      */
     public void delete(String id) {
-        labelDao.deleteById(id);
+        labelMapper.deleteByPrimaryKey(id);
     }
 
     /**
@@ -77,25 +77,25 @@ public class LabelService {
      * @param label
      * @return
      */
-    public Page<Label> findSearch(Label label, int page, int size) {
-        PageRequest pageRequest = PageRequest.of(page-1, size);
-        return labelDao.findAll(new Specification<Label>() {
-            @Override
-            public Predicate toPredicate(Root<Label> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                List<Predicate> predicateArrayList = new ArrayList<>();
-                if (label.getLabelname() != null && !"".equals(label.getLabelname())) { //标签名称
-                    predicateArrayList.add(criteriaBuilder.like(root.get("labelname").as(String.class), "%" + label.getLabelname() + "%"));
-                }
-                if (label.getState() != null && !"".equals(label.getState())) { //状态
-                    predicateArrayList.add(criteriaBuilder.like(root.get("state").as(String.class), "%" + label.getState() + "%"));
-                }
-                if (label.getRecommend() != null && !"".equals(label.getRecommend())) {  //是否推荐
-                    predicateArrayList.add(criteriaBuilder.like(root.get("recommend").as(String.class), "%" + label.getRecommend() + "%"));
-                }
-
-                return criteriaBuilder.and(predicateArrayList.toArray(new Predicate[predicateArrayList.size()]));
-            }
-        },pageRequest);
-    }
+//    public Page<Label> findSearch(Label label, int page, int size) {
+//        PageRequest pageRequest = PageRequest.of(page-1, size);
+//        return labelMapper.findAll(new Specification<Label>() {
+//            @Override
+//            public Predicate toPredicate(Root<Label> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+//                List<Predicate> predicateArrayList = new ArrayList<>();
+//                if (label.getLabelname() != null && !"".equals(label.getLabelname())) { //标签名称
+//                    predicateArrayList.add(criteriaBuilder.like(root.get("labelname").as(String.class), "%" + label.getLabelname() + "%"));
+//                }
+//                if (label.getState() != null && !"".equals(label.getState())) { //状态
+//                    predicateArrayList.add(criteriaBuilder.like(root.get("state").as(String.class), "%" + label.getState() + "%"));
+//                }
+//                if (label.getRecommend() != null && !"".equals(label.getRecommend())) {  //是否推荐
+//                    predicateArrayList.add(criteriaBuilder.like(root.get("recommend").as(String.class), "%" + label.getRecommend() + "%"));
+//                }
+//
+//                return criteriaBuilder.and(predicateArrayList.toArray(new Predicate[predicateArrayList.size()]));
+//            }
+//        },pageRequest);
+//    }
 
 }

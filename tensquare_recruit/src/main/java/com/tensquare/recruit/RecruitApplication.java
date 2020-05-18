@@ -15,7 +15,7 @@ import util.IdWorker;
  **/
 @EnableSwagger2
 @SpringBootApplication
-//@MapperScan({"com.tensquare.recruit.dao", "mapper"})
+//@MapperScan({"com.tensquare.recruit.mapper", "com.tensquare.base.mapper"})
 public class RecruitApplication {
     public static void main(String[] args) {
         SpringApplication.run(RecruitApplication.class);
