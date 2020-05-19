@@ -29,8 +29,8 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tensquare.base.pojo.Label" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into tb_label (labelname, `state`, `count`, recommend, fans)
-    values (#{labelname}, #{state}, #{count}, #{recommend}, #{fans})
+    insert into tb_label (id,labelname, `state`, `count`, recommend, fans)
+    values (#{id},#{labelname}, #{state}, #{count}, #{recommend}, #{fans})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.tensquare.base.pojo.Label" useGeneratedKeys="true">
     <!--@mbg.generated-->
@@ -107,26 +107,10 @@
     <include refid="Base_Column_List" />
     from tb_label;
   </select>
-  <!--  <resultMap id="BaseResultMap" type="com.tensquare.base.pojo.Label">
-        <id column="id" jdbcType="VARCHAR" property="id" />
-        <id column="labelname" jdbcType="VARCHAR" property="labelname" />
-        <id column="state" jdbcType="VARCHAR" property="state" />
-        <id column="count" jdbcType="BIGINT" property="count" />
-        <id column="recommend" jdbcType="VARCHAR" property="recommend" />
-        <id column="fans" jdbcType="BIGINT" property="fans" />
-    </resultMap>
-    <sql id="Base_Column_List">
-        id,labelname,state,count,recommend,fans
-    </sql>
-
-    <select id="findById" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from tb_label
-        where id = #{id,jdbcType=VARCHAR}
-    </select>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tensquare.base.pojo.Label" useGeneratedKeys="true">
-        insert into tb_label
-    </insert>-->
+  <select id="findPages" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_label
+  </select>
 
 </mapper>

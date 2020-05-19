@@ -38,3 +38,6 @@ logging:
   level:
     com.macro.mall.mapper: debug
     com.macro.mall.portal.dao: debug
+#mybatis:
+#  type-aliases-package: com.tensquare.base.pojo
+#  mapper-locations: classpath:mybatis/**/*Mapper.xml

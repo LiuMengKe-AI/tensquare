@@ -1,5 +1,6 @@
 package com.tensquare.base.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.tensquare.base.pojo.Label;
 import com.tensquare.base.service.LabelService;
 import entity.PageResult;
@@ -10,6 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
+import util.PageRequest;
 
 import java.util.List;
 import java.util.Optional;
@@ -101,16 +103,15 @@ public class LabelController {
     }
 
     /**
-     * 分页条件查询
+     * 分页查询
      *
-     * @param label
+     * @param
      * @return
      */
-   /* @ApiOperation(value = "条件分页查询")
+    @ApiOperation(value = "分页查询")
     @ResponseBody
-    @PostMapping(value = "/search/{page}/{size}")
-    public Result<Label> findSearch(@RequestBody Label label, @PathVariable("page") int page, @PathVariable("size") int size) {
-        Page<Label> pageList = labelService.findSearch(label, page, size);
-        return new Result<Label>(true, StatusCode.OK, "查询成功", new PageResult<>(pageList.getTotalElements(), pageList.getContent()));
-    }*/
+    @PostMapping(value = "/searchPage")
+    public Result<Label> findSearch(@RequestBody PageRequest pageRequest) {
+        return new Result<Label>(true, StatusCode.OK, "查询成功", labelService.findPage(pageRequest));
+    }
 }

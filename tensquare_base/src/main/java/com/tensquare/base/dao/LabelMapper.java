@@ -23,6 +23,8 @@ public interface LabelMapper {
     int updateByPrimaryKey(Label record);
 
     List<Label> findAll();
+
+    List<Label> findPages();
 //
 //    Optional<Label> findById(String id);
 //

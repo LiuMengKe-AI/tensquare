@@ -1,21 +1,18 @@
 package com.tensquare.base.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.tensquare.base.dao.LabelMapper;
 import com.tensquare.base.pojo.Label;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.domain.Specification;
+
 import org.springframework.stereotype.Service;
 import util.IdWorker;
+import util.PageRequest;
+import util.PageResult;
+import util.PageUtils;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @ClassName: LableService
@@ -71,31 +68,22 @@ public class LabelService {
         labelMapper.deleteByPrimaryKey(id);
     }
 
+    public PageResult findPage(PageRequest pageRequest) {
+        return PageUtils.getPageResult(pageRequest, getPageInfo(pageRequest));
+    }
     /**
-     * 分页条件查询
+     * 分页查询
      *
-     * @param label
+     * @param
      * @return
      */
-//    public Page<Label> findSearch(Label label, int page, int size) {
-//        PageRequest pageRequest = PageRequest.of(page-1, size);
-//        return labelMapper.findAll(new Specification<Label>() {
-//            @Override
-//            public Predicate toPredicate(Root<Label> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-//                List<Predicate> predicateArrayList = new ArrayList<>();
-//                if (label.getLabelname() != null && !"".equals(label.getLabelname())) { //标签名称
-//                    predicateArrayList.add(criteriaBuilder.like(root.get("labelname").as(String.class), "%" + label.getLabelname() + "%"));
-//                }
-//                if (label.getState() != null && !"".equals(label.getState())) { //状态
-//                    predicateArrayList.add(criteriaBuilder.like(root.get("state").as(String.class), "%" + label.getState() + "%"));
-//                }
-//                if (label.getRecommend() != null && !"".equals(label.getRecommend())) {  //是否推荐
-//                    predicateArrayList.add(criteriaBuilder.like(root.get("recommend").as(String.class), "%" + label.getRecommend() + "%"));
-//                }
-//
-//                return criteriaBuilder.and(predicateArrayList.toArray(new Predicate[predicateArrayList.size()]));
-//            }
-//        },pageRequest);
-//    }
+    public PageInfo<Label> getPageInfo(PageRequest pageRequest) {
+        int pageNumber = pageRequest.getPageNum();
+        int pageSize = pageRequest.getPageSize();
+        PageHelper.startPage(pageNumber,pageSize);
+        List<Label> pages = labelMapper.findPages();
+        return new PageInfo<Label>(pages);
+
+    }
 
 }
