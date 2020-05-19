@@ -1,7 +1,7 @@
 package com.tensquare.base.dao;
 
 import com.tensquare.base.pojo.Label;
-import org.apache.ibatis.annotations.Mapper;import java.util.List;import java.util.Optional;
+import java.util.List;
 
 /**
  * @ClassName: ${NAME}

@@ -1,5 +1,6 @@
 package com.tensquare.qa;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +15,7 @@ import util.IdWorker;
  **/
 @EnableSwagger2
 @SpringBootApplication
+@MapperScan({"com.tensquare.qa.dao","mapper"})
 public class QaApplication {
 
 
