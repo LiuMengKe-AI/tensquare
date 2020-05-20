@@ -191,4 +191,12 @@
                      where labelid = #{labelId})
         order by p.replytime desc
     </select>
+    <select id="findByIdHotProblem" resultType="entity.Result">
+        select *
+        from tb_problem p
+        where id in (select problemid
+                     from tb_pl
+                     where labelid = #{labelId})
+        order by p.reply desc
+    </select>
 </mapper>

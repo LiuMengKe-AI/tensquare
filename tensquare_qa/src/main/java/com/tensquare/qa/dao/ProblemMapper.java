@@ -2,6 +2,7 @@ package com.tensquare.qa.dao;
 
 import com.github.pagehelper.Page;
 import com.tensquare.qa.pojo.Problem;
+import entity.Result;
 import org.springframework.data.repository.query.Param;
 
 /**
@@ -24,4 +25,6 @@ public interface ProblemMapper {
     int updateByPrimaryKey(Problem record);
 
     Page<Problem> findByIdProblem(@Param("labelId") String labelId);
+
+    Page<Problem> findByIdHotProblem(@Param("labelId") String labelId);
 }

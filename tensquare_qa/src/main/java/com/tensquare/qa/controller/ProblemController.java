@@ -29,8 +29,17 @@ public class ProblemController {
     @ApiOperation(value = "根据标签id查询最新问题列表")
     @GetMapping(value = "/findProblem/{labelId}")
     @ResponseBody
-    public Result findByIdProblem(@PathVariable String labelId,  PageRequest pageRequest) {
+    public Result findByIdProblem(@PathVariable String labelId, PageRequest pageRequest) {
         return new Result(true, StatusCode.OK, "查询成功", problemService.findProblemList(labelId, pageRequest));
     }
 
+    /**
+     * 根据标签ID查询热门问题列表
+     */
+    @ApiOperation(value = "根据标签ID查询热门问题列表")
+    @GetMapping(value = "/findHotProblem/{labelId}")
+    @ResponseBody
+    public Result findHotProblem(@PathVariable String labelId, PageRequest pageRequest) {
+        return new Result(true, StatusCode.OK, "查询成功", problemService.findHotProblemList(labelId, pageRequest));
+    }
 }

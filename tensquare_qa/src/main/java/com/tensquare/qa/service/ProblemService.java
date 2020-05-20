@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.tensquare.qa.dao.ProblemMapper;
 import com.tensquare.qa.pojo.Problem;
+import entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.PageRequest;
@@ -34,4 +35,17 @@ public class ProblemService {
         Page<Problem> page = problemMapper.findByIdProblem(labelId);
         return new PageInfo<Problem>(page);
     }
+
+    public PageResult findHotProblemList(String labelId, PageRequest pageRequest) {
+        return PageUtils.getPageResult(pageRequest, getPageInfoList(labelId, pageRequest));
+    }
+
+    private PageInfo<Problem> getPageInfoList(String labelId, PageRequest pageRequest) {
+        int pageNumber = pageRequest.getPageNum();
+        int pageSize = pageRequest.getPageSize();
+        PageHelper.startPage(pageNumber, pageSize);
+        Page<Problem> problem = problemMapper.findByIdHotProblem(labelId);
+        return new PageInfo<Problem>(problem);
+    }
+
 }
