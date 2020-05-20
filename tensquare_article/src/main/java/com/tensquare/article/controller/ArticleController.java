@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * @Date: 2020/5/20 11:10
  * @Version: 1.0
  **/
-@Api(tags = "ArticleController",description = "文章操作类")
+@Api(tags = "ArticleController", description = "文章操作类")
 @RestController
 @RequestMapping(value = "/article")
 public class ArticleController {
@@ -33,6 +33,7 @@ public class ArticleController {
         articleService.examine(id);
         return new Result(true, StatusCode.OK, "审核成功");
     }
+
     /**
      * 文章点赞
      */
@@ -43,24 +44,29 @@ public class ArticleController {
         articleService.updateThumbup(id);
         return new Result(true, StatusCode.OK, "点赞成功");
     }
+
     /**
-     *查询文章并作缓存
+     * 查询文章并作缓存
      */
     @ApiOperation(value = "查询文章并作缓存")
     @GetMapping(value = "/findArticle/{id}")
     @ResponseBody
-    public Result findArticle(@PathVariable String id){
-       Article article = articleService.findArticleById(id);
-       return new Result(true,StatusCode.OK,"查询成功",article);
+    public Result findArticle(@PathVariable String id) {
+        Article article = articleService.findArticleById(id);
+        return new Result(true, StatusCode.OK, "查询成功", article);
     }
+
     /**
      * 删除文章同时删除redis
      */
     @ApiOperation(value = "删除文章同时删除redis")
     @GetMapping(value = "/deleteArticle/{id}")
     @ResponseBody
-    public Result deleteArticle(@PathVariable String id){
-         articleService.deleteArticleById(id);
-        return new Result(true,StatusCode.OK,"删除成功");
+    public Result deleteArticle(@PathVariable String id) {
+        if (id != null) {
+            articleService.deleteArticleById(id);
+            return new Result(true, StatusCode.OK, "删除成功");
+        }
+        return new Result(false, StatusCode.ERROR, "id不存在");
     }
 }
