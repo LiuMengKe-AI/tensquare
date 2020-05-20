@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tensquare.article.dao.ArticleMapper">
+    <resultMap id="BaseResultMap" type="com.tensquare.article.pojo.Article">
+        <!--@mbg.generated-->
+        <id column="id" property="id"/>
+        <result column="columnid" property="columnid"/>
+        <result column="userid" property="userid"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="image" property="image"/>
+        <result column="createtime" property="createtime"/>
+        <result column="updatetime" property="updatetime"/>
+        <result column="ispublic" property="ispublic"/>
+        <result column="istop" property="istop"/>
+        <result column="visits" property="visits"/>
+        <result column="thumbup" property="thumbup"/>
+        <result column="comment" property="comment"/>
+        <result column="state" property="state"/>
+        <result column="channelid" property="channelid"/>
+        <result column="url" property="url"/>
+        <result column="type" property="type"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, columnid, userid, title, content, image, createtime, updatetime, ispublic, istop,
+        visits, thumbup, `comment`, `state`, channelid, url, `type`
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from tb_article
+        where id = #{id}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        <!--@mbg.generated-->
+        delete from tb_article
+        where id = #{id}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tensquare.article.pojo.Article"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into tb_article (columnid, userid, title, content, image, createtime, updatetime,
+        ispublic, istop, visits, thumbup, `comment`, `state`, channelid,
+        url, `type`)
+        values (#{columnid}, #{userid}, #{title}, #{content}, #{image}, #{createtime}, #{updatetime},
+        #{ispublic}, #{istop}, #{visits}, #{thumbup}, #{comment}, #{state}, #{channelid},
+        #{url}, #{type})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.tensquare.article.pojo.Article"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into tb_article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="columnid != null">
+                columnid,
+            </if>
+            <if test="userid != null">
+                userid,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="image != null">
+                image,
+            </if>
+            <if test="createtime != null">
+                createtime,
+            </if>
+            <if test="updatetime != null">
+                updatetime,
+            </if>
+            <if test="ispublic != null">
+                ispublic,
+            </if>
+            <if test="istop != null">
+                istop,
+            </if>
+            <if test="visits != null">
+                visits,
+            </if>
+            <if test="thumbup != null">
+                thumbup,
+            </if>
+            <if test="comment != null">
+                `comment`,
+            </if>
+            <if test="state != null">
+                `state`,
+            </if>
+            <if test="channelid != null">
+                channelid,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="type != null">
+                `type`,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="columnid != null">
+                #{columnid},
+            </if>
+            <if test="userid != null">
+                #{userid},
+            </if>
+            <if test="title != null">
+                #{title},
+            </if>
+            <if test="content != null">
+                #{content},
+            </if>
+            <if test="image != null">
+                #{image},
+            </if>
+            <if test="createtime != null">
+                #{createtime},
+            </if>
+            <if test="updatetime != null">
+                #{updatetime},
+            </if>
+            <if test="ispublic != null">
+                #{ispublic},
+            </if>
+            <if test="istop != null">
+                #{istop},
+            </if>
+            <if test="visits != null">
+                #{visits},
+            </if>
+            <if test="thumbup != null">
+                #{thumbup},
+            </if>
+            <if test="comment != null">
+                #{comment},
+            </if>
+            <if test="state != null">
+                #{state},
+            </if>
+            <if test="channelid != null">
+                #{channelid},
+            </if>
+            <if test="url != null">
+                #{url},
+            </if>
+            <if test="type != null">
+                #{type},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tensquare.article.pojo.Article">
+        <!--@mbg.generated-->
+        update tb_article
+        <set>
+            <if test="columnid != null">
+                columnid = #{columnid},
+            </if>
+            <if test="userid != null">
+                userid = #{userid},
+            </if>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="content != null">
+                content = #{content},
+            </if>
+            <if test="image != null">
+                image = #{image},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime},
+            </if>
+            <if test="updatetime != null">
+                updatetime = #{updatetime},
+            </if>
+            <if test="ispublic != null">
+                ispublic = #{ispublic},
+            </if>
+            <if test="istop != null">
+                istop = #{istop},
+            </if>
+            <if test="visits != null">
+                visits = #{visits},
+            </if>
+            <if test="thumbup != null">
+                thumbup = #{thumbup},
+            </if>
+            <if test="comment != null">
+                `comment` = #{comment},
+            </if>
+            <if test="state != null">
+                `state` = #{state},
+            </if>
+            <if test="channelid != null">
+                channelid = #{channelid},
+            </if>
+            <if test="url != null">
+                url = #{url},
+            </if>
+            <if test="type != null">
+                `type` = #{type},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tensquare.article.pojo.Article">
+        <!--@mbg.generated-->
+        update tb_article
+        set columnid = #{columnid},
+        userid = #{userid},
+        title = #{title},
+        content = #{content},
+        image = #{image},
+        createtime = #{createtime},
+        updatetime = #{updatetime},
+        ispublic = #{ispublic},
+        istop = #{istop},
+        visits = #{visits},
+        thumbup = #{thumbup},
+        `comment` = #{comment},
+        `state` = #{state},
+        channelid = #{channelid},
+        url = #{url},
+        `type` = #{type}
+        where id = #{id}
+    </update>
+    <update id="examine">
+        update tb_article
+        set state = '1'
+        where id = #{id}
+    </update>
+    <update id="updateThumbup">
+        update tb_article
+        set thumbup = thumbup + 1
+        where id = #{id}
+    </update>
+</mapper>

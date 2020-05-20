@@ -191,7 +191,7 @@
                      where labelid = #{labelId})
         order by p.replytime desc
     </select>
-    <select id="findByIdHotProblem" resultType="entity.Result">
+    <select id="findByIdHotProblem" resultMap="BaseResultMap">
         select *
         from tb_problem p
         where id in (select problemid
