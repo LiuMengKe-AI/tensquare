@@ -34,6 +34,13 @@ pagehelper:
     supportMethodsArguments: true
     pageSizeZero: true
     params: count=countSql
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml,classpath:mapper/*/*.xml
+  configuration:
+    cache-enabled: false
+    lazy-loading-enabled: false
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.tensquare.qa.pojo
 logging:
   level:
     com.macro.mall.mapper: debug
