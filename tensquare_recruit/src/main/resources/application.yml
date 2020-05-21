@@ -38,3 +38,7 @@ logging:
   level:
     com.macro.mall.mapper: debug
     com.macro.mall.portal.dao: debug
+eureka:
+  client:
+    service‐url:
+      defaultZone: http://localhost:6868/eureka

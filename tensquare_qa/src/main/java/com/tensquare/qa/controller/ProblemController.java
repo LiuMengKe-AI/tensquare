@@ -1,5 +1,6 @@
 package com.tensquare.qa.controller;
 
+import com.tensquare.qa.client.LabelClient;
 import com.tensquare.qa.service.ProblemService;
 import entity.Result;
 import entity.StatusCode;
@@ -23,6 +24,23 @@ public class ProblemController {
     @Autowired
     ProblemService problemService;
 
+    @Autowired
+    LabelClient labelClient;
+
+    /**
+     * 远程调用
+     *
+     * @param labelId
+     * @return
+     */
+    @GetMapping(value = "/label/{labelId}")
+    @ApiOperation(value = "根据标签id查询")
+    @ResponseBody
+    public Result findLabelById(@PathVariable String labelId) {
+        Result result = labelClient.findById(labelId);
+        return result;
+    }
+
     /**
      * 根据标签id查询最新问题列表
      */
@@ -42,4 +60,5 @@ public class ProblemController {
     public Result findHotProblem(@PathVariable String labelId, PageRequest pageRequest) {
         return new Result(true, StatusCode.OK, "查询成功", problemService.findHotProblemList(labelId, pageRequest));
     }
+
 }

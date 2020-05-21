@@ -38,6 +38,17 @@ logging:
   level:
     com.macro.mall.mapper: debug
     com.macro.mall.portal.dao: debug
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml,classpath:mapper/*/*.xml
+  configuration:
+    cache-enabled: false
+    lazy-loading-enabled: false
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.tensquare.article.pojo
 redis:
   host: 127.0.0.1
   port: 6379
+eureka:
+  client:
+    service‐url:
+      defaultZone: http://localhost:6868/eureka

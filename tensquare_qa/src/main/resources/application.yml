@@ -45,3 +45,9 @@ logging:
   level:
     com.macro.mall.mapper: debug
     com.macro.mall.portal.dao: debug
+eureka:
+  client:
+    registerWithEureka: true #服务注册开关
+    fetchRegistry: true #服务发现开关
+    service‐url:
+      defaultZone: http://localhost:6868/eureka/
