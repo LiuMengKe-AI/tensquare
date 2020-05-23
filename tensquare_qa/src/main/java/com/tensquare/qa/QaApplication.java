@@ -18,7 +18,7 @@ import util.IdWorker;
  **/
 @EnableSwagger2
 @SpringBootApplication
-@MapperScan({"com.tensquare.qa.dao", "mapper"})
+@MapperScan({"com.tensquare.qa", "mapper"})
 @EnableEurekaClient
 @EnableDiscoveryClient
 @EnableFeignClients

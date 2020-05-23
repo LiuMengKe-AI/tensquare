@@ -33,7 +33,7 @@ public class ProblemController {
      * @param labelId
      * @return
      */
-    @GetMapping(value = "/label/{labelId}")
+    @GetMapping(value = "/findById/{labelId}")
     @ApiOperation(value = "根据标签id查询")
     @ResponseBody
     public Result findLabelById(@PathVariable String labelId) {
