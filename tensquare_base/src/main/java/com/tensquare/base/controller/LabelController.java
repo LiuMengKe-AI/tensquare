@@ -1,20 +1,16 @@
 package com.tensquare.base.controller;
 
-import com.github.pagehelper.PageInfo;
 import com.tensquare.base.pojo.Label;
 import com.tensquare.base.service.LabelService;
-import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import util.PageRequest;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @ClassName: UserController
