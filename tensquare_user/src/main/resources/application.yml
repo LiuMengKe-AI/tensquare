@@ -1,0 +1,55 @@
+server:
+  port: 9010
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  servlet:
+      multipart:
+         max-request-size: -1
+         max-file-size: -1
+#  profiles:
+#      active:
+  datasource:
+    url: jdbc:mysql://192.168.62.102:3306/tensquare_use?characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+  redis:
+    host: localhost
+    database: 0
+    port: 6379
+    password:
+secure:
+  ignored:
+    urls:
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - /webjars/springfox-swagger-ui/**
+      - /**/**
+      - /bank/**
+      - /user/**
+      - /cms/authCode/**
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    pageSizeZero: true
+    params: count=countSql
+
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mall-admin-secret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24*7) 7天
+  tokenHead: Bearer  #JWT负载中拿到开头
+
+logging:
+  level:
+    com.macro.mall.mapper: debug
+    com.macro.mall.portal.dao: debug

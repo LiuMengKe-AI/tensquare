@@ -17,6 +17,7 @@
         <module>tensquare_qa</module>
         <module>tensquare_article</module>
         <module>tensquare_eureka</module>
+        <module>tensquare_user</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
