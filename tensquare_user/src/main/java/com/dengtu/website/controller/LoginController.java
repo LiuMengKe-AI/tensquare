@@ -102,6 +102,8 @@ public class LoginController {
         if (refreshToken == null) {
             return CommonResult.failed("token已经过期！");
         }
+
+
         Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("token", refreshToken);
         tokenMap.put("tokenHead", tokenHead);
