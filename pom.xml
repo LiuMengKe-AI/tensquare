@@ -27,7 +27,7 @@
         <hutool.version>5.2.3</hutool.version>
         <springfox.swagger2.version>2.7.0</springfox.swagger2.version>
         <springfox.swagger.ui.version>2.7.0</springfox.swagger.ui.version>
-        <fastJson.version>1.2.67</fastJson.version>
+        <fastJson.version>1.2.83</fastJson.version>
         <mysql.version>6.0.6</mysql.version>
         <github.pagehelper.version>1.2.5</github.pagehelper.version>
         <mybatis.spring.boot.version>2.1.2</mybatis.spring.boot.version>
