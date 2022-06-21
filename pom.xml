@@ -28,7 +28,7 @@
         <springfox.swagger2.version>2.7.0</springfox.swagger2.version>
         <springfox.swagger.ui.version>2.7.0</springfox.swagger.ui.version>
         <fastJson.version>1.2.67</fastJson.version>
-        <mysql.version>6.0.6</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <github.pagehelper.version>1.2.5</github.pagehelper.version>
         <mybatis.spring.boot.version>2.1.2</mybatis.spring.boot.version>
         <lombok.version>1.16.20</lombok.version>
